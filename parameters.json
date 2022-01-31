@@ -1,0 +1,12 @@
+{
+    "default_bright_thresh": 50,
+    "default_dark_thresh": 50,
+    "default_mdl_ppmm": 5,
+    "default_exp_time": 200,
+    "bright_thresh": 30,
+    "dark_thresh": 100,
+    "mdl_ppmm": 5,
+    "exp_time": 250,
+    "gui_width": 1200,
+    "gui_height": 700
+}
