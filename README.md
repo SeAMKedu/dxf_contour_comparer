@@ -83,7 +83,7 @@ A file like the used _calibration_file.json_ can be constructed with **calib_gui
 
 ![Calibration GUi image](/documentation_images/calib_gui_info.png)
 
-There is one test file, _calib_image.png_. The file _calibration_file.json_ has been done with that image. The camera has to be recalibrated if
+There is one test file for calibration, _calib_image.png_. The file _calibration_file.json_ has been done with that image. The camera has to be recalibrated if
 - the focus changes
 - the zoom changes
 - its angle or the target plane's angle changes
