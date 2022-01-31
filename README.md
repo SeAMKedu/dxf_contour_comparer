@@ -91,20 +91,6 @@ There is one test file, _calib_image.png_. The file _calibration_file.json_ has 
 
 In a nutshell: if someone touches the camera, it has to be recalibrated. The camera is calibrated by using a print of a chessboard. It can be acquired from [here](https://calib.io/pages/camera-calibration-pattern-generator).
 
-### Using with Raspberry Pi for the FMS cell
-
-There is the file **rasp_main.py** designed for Raspberry-based checks. It has the function _main_ that
-- reads a dxf file from the hard drive of the Raspberry (the filename is hard coded in the line 112, my suggestion is have a separate function for receiving a new dxf file to the Raspberry and saving it to its hard drive with a given name = overwriting the previous file. So this one file would always be the CAD model the function _main_ compares the images to.)
-- connects to the Basler camera (a mehthod that uses the Raspberry camera module should be tested as well)
-- takes an image with the Basler camera
-- corrects the distortion from the image by applying a known calibration file (produce as described in [Calibration](#calibration)) that is stored in the hard drive of the Raspberry also with a given name (line 74 in _main_)
-- binarizes the image to black and white (the threshold value in the line 128 has to be adjusted. As the illumination conditions should remain constant, manual global thresholding should be fine)
-- runs the _compare_contours_ comparison functions
-- saves the result image to the hard disk of Rasp with the name including the sent logging tag (the name is defined in the line 126 of the function _main_)
-- returns the result True, False and the result image as array
-
-This function has never been tested (as known in 25.2.2021). My advice is to first test to run the file *gui.py* with the Rasp. If that works, there is hope **rasp_main.py** works as well. Or debugging it would be at least shorter. :)
-
 ## Operation logic
 
 ### Reading the dxf file
@@ -138,27 +124,7 @@ After the best transformation is detected with ICP, also the inner contours are 
 - As PCA is based on finding the orientation of images, it will fail with symmetrical forms such as squares and circles. These special cases need some other strategy. Maybe the symmetry should be first tested and then just orientations +90 degrees and +270 should tested as well. Well, for the circles that is not enough... Also, doing the PCA for all blob points, not only the outer contour points, would utilize also the information of the inner shapes in finding the orientation.
 - As the outermost contours are used in aligning the shapes as discussed in the section of test file Image__fail2 in [DXF-contour-checks](#dxf-contour-checks), slight deviations in them are not detected since the ICP algorithm finds the best possible transformation between the shapes and thus minimizes the local errors. If there are inner contours, this causes deviation to them that could be detected. This could be tackled by calculating parameters as the area or the perimeter from the outer contours of the model and the image and comparing them to each other. Maybe the OpenCV function matchShapes could help as well but it is hard to find the right threshold with that (is it good when its below 0.01 or 0.001?!)
 - The code of the function _match_contour_to_model_ in the file **compare_contours.py** is full of calls to function .reshape(). This looks pretty messy but is kind of compulsory since OpenCV and NumPy functions handle coordinate arrays differently: for OpenCV, they are usually in form [[[x1, y1]], [[x2, y2]], ...], for NumPy, they are usually in form [[x1, y1], [x2, y2]] and also most of the functions in these modules expect the coordinates to be in those formats. So if one needs functions in both modules one after another, one has to reshape the arrays all the time.
-- the variable _fail_reason_ in the function _match_contour_to_model_ is not used. The idea is to return it at some point.
 - Currently, any numerical value for failures is not calculated. The average, maximum and minimum point-to-point distances could be returned or logged or something. That is an easy task and can be done from the _distances_ array returned by _NearestNeigbors_
-
-## Branches
-
-The project has three branches
-- master
-- rasp
-- dev
-
-### master
-
-The working (at least they _should be_) versions.
-
-### dev
-
-This is the development sandbox.
-
-### rasp
-
-The original development branch for Rasp, will be removed
 
 ## Authors
 
