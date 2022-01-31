@@ -81,7 +81,6 @@ or playing with the webcam.
 
 A file like the used _calibration_file.json_ can be constructed with **calib_gui.py**. When it is run, the GUI opens:
 
-![Calibration GUi image](/documentation_images/calib_gui_info.png)
 
 There is one test file for calibration, _calib_image.png_. The file _calibration_file.json_ has been done with that image. The camera has to be recalibrated if
 - the focus changes
