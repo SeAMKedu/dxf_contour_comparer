@@ -2,6 +2,8 @@
 
 This tool compares the image of a 2D part to the DXF file describing its geometry. The tool first binarizes the image and then extracts its contours to compare their similarity with the geometry in the DXF file. Therefore, good illumination is crucial. The tool compares the 2D geometry so it is usable with sheet metal parts. This was originally done in the EDIT project for the machine vision inspection point for the FMS cell of the machine laboratory of SeAMK.
 
+The video shows the functioning of the tool: https://www.youtube.com/watch?v=Q_JCKgVhxt8
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
