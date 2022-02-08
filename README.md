@@ -1,6 +1,6 @@
 # EDIT Contour-to-DXF comparer
 
-This tool compares the image of a 2D part to the DXF file describing its geometry. The tool first binarizes the image and then extracts its contours to compare their similarity with the geometry in the DXF file. Therefore, good illumination is crucial. The tool compares the 2D geometry so it is usable with sheet metal parts. This was originally done in the EDIT project for the machine vision inspection point for the FMS cell of the machine laboratory of SeAMK.
+This tool compares the image of a 2D part to the DXF file describing its geometry. The tool first binarizes the image and then extracts its contours to compare their similarity with the geometry in the DXF file. Therefore, good illumination is crucial. The tool compares the 2D geometry so it is usable with sheet metal parts. This was originally done in the [EDIT project](https://projektit.seamk.fi/alykkaat-teknologiat/enterprise-digital-twin-platform-edit/) for the machine vision inspection point for the FMS cell of the machine laboratory of SeAMK.
 
 [This video](https://www.youtube.com/watch?v=Q_JCKgVhxt8) shows how the tool functions.
 
